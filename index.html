@@ -220,7 +220,7 @@
 
     <nav>
         <div class="nav-logo-container">
-            <img src="Canva Design.png" alt="HH Logo" class="nav-logo-img">
+            <img src="Canva Design.jpg" alt="HH Logo" class="nav-logo-img">
             <div class="nav-logo-text">Hacking Hub</div>
         </div>
         <div class="nav-links">
@@ -242,7 +242,7 @@
 
     <section id="mission">
         <h2>Our Mission</h2>
-        <p>To create a high-performance environment where members learn daily, practice hands-on, grow their professional presence, and hold each other accountable.</p>
+        [cite_start]<p>To create a high-performance environment where members learn daily, practice hands-on, grow their professional presence, and hold each other accountable[cite: 5].</p>
         <div class="grid">
             <div class="card">
                 <h3>🚀 Accountability</h3>
@@ -261,6 +261,79 @@
 
     <section id="challenge">
         <h2>The 8-Week Accountability Challenge</h2>
-        <p>Every quarter, we run a structured challenge designed to boost your skills, visibility, and consistency.</p>
+        [cite_start]<p>Every quarter, we run a structured challenge designed to boost your skills, visibility, and consistency[cite: 8].</p>
         
         <div class="card" style="border-color: var(--primary-purple);">
+            <h3>Daily Rules</h3>
+            <ul>
+                [cite_start]<li><strong>Check-in:</strong> Provide an update between 6:00 PM and 11:00 PM (local time)[cite: 22].</li>
+                [cite_start]<li><strong>Task Completion:</strong> At least one selected task must be done by the end of the day[cite: 23].</li>
+            </ul>
+            <br>
+            <button class="btn" style="background: var(--dark-bg); border: 1px solid var(--accent-cyan); color: var(--accent-cyan);" onclick="toggleRules()">View Example Tasks</button>
+            <div id="tasks" class="hidden-content">
+                <ul>
+                    [cite_start]<li>📚 Study 1 hour toward a certification (Security+, Azure, AWS, etc.)[cite: 16].</li>
+                    [cite_start]<li>💻 Complete a TryHackMe or LetsDefend room[cite: 17].</li>
+                    [cite_start]<li>🎧 Listen to a cybersecurity podcast and post a summary on LinkedIn[cite: 18].</li>
+                    [cite_start]<li>🤝 Attend an in-person event and share key takeaways on LinkedIn[cite: 20].</li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <div class="card">
+            <h3>🏆 The Prize</h3>
+            [cite_start]<p>The member with the most completed TryHackMe rooms wins a <span class="highlight">free certification voucher</span> of their choice[cite: 25].</p>
+        </div>
+    </section>
+
+    <section id="reviews">
+        <h2>Community Feedback</h2>
+        <p>See what our members say about the Hacking Hub environment.</p>
+        <div class="grid">
+            <div class="card">
+                <p class="testimonial-text">"The accountability here is unlike anywhere else. I finally passed my Security+ because I had a team pushing me every single day."</p>
+                <div class="testimonial-author">- Hacking Hub Member</div>
+            </div>
+            <div class="card">
+                <p class="testimonial-text">"I struggled with consistency for years. The 8-week challenge gave me the structure I needed to land my first analyst role."</p>
+                <div class="testimonial-author">- Junior Analyst</div>
+            </div>
+            <div class="card">
+                <p class="testimonial-text">"No gatekeeping, just pure support. The mock interviews and roadmap sessions were a game changer for my confidence."</p>
+                <div class="testimonial-author">- HH Blue Team Member</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="book-session" class="cta-section">
+        <h2>Ready to Commit?</h2>
+        [cite_start]<p>Your success depends on your own dedication and effort[cite: 101]. If you are ready to show up daily, it's time to build your future.</p>
+        
+        <div class="card" style="max-width: 600px; margin: 0 auto; background: var(--dark-bg);">
+            <h3>Book Your 1-on-1 Roadmap Session</h3>
+            [cite_start]<p>This essential 45-minute session is where we establish your personalized 8-Week Challenge plan and create your 12-month career roadmap[cite: 151].</p>
+            [cite_start]<p><em>This meeting is non-negotiable for all new members[cite: 152].</em></p>
+            <br>
+            <button class="btn" onclick="alert('Redirecting to Calendly...')">Schedule Now</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>Hacking Hub &copy; 2024. Collaboration | Respect | [cite_start]Excellence[cite: 32].</p>
+        [cite_start]<p><em>"Consistent effort beats occasional bursts of motivation." [cite: 105]</em></p>
+    </footer>
+
+    <script>
+        function toggleRules() {
+            var x = document.getElementById("tasks");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+</html>
