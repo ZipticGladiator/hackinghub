@@ -6,27 +6,27 @@
     <title>Hacking Hub | Build Your Cyber Future</title>
     <style>
         :root {
-            /* Color scheme based on the provided logo */
-            --primary-purple: #a855f7; /* Neon Purple for primary highlights */
-            --accent-cyan: #0ed7b5; /* Neon Cyan for accents and gradients */
-            --dark-bg: #050505; /* Deep black background */
-            --dark-sec: #121212; /* Slightly lighter dark for cards/nav */
-            --text-light: #ffffff; /* Bright white text */
-            --text-dim: #aaaaaa; /* Dimmed text */
+            --primary-purple: #a855f7; 
+            --accent-cyan: #0ed7b5; 
+            --dark-bg: #050505; 
+            --dark-sec: #121212; 
+            --text-light: #ffffff; 
+            --text-dim: #aaaaaa; 
         }
         
         body {
-            font-family: 'Courier New', Courier, monospace; /* Retaining hacker aesthetic */
+            font-family: 'Courier New', Courier, monospace; 
             background-color: var(--dark-bg);
             color: var(--text-light);
             margin: 0;
             line-height: 1.6;
+            overflow-x: hidden; /* Prevents scrollbar if watermark is too big */
         }
 
         /* Navigation */
         nav {
             background: var(--dark-sec);
-            padding: 1rem;
+            padding: 0.5rem 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -37,7 +37,21 @@
             box-shadow: 0 2px 10px rgba(168, 85, 247, 0.3);
         }
 
-        .logo {
+        /* Logo Styling for Corner */
+        .nav-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-logo-img {
+            height: 50px; /* Adjust based on preference */
+            width: auto;
+            border-radius: 50%; /* Optional: Makes it circular if square */
+            border: 2px solid var(--accent-cyan);
+        }
+
+        .nav-logo-text {
             font-weight: bold;
             font-size: 1.5rem;
             color: var(--accent-cyan);
@@ -57,12 +71,30 @@
             color: var(--accent-cyan);
         }
 
-        /* Hero Section */
+        /* Hero Section with Watermark Background */
         .hero {
+            position: relative; /* Needed for watermark positioning */
             text-align: center;
             padding: 120px 20px;
-            /* Subtle purple/blue gradient background */
             background: radial-gradient(circle at center, #1a1a2e 0%, var(--dark-bg) 100%);
+            overflow: hidden;
+        }
+
+        /* The Background Logo Watermark */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px; /* Size of background logo */
+            opacity: 0.1; /* Very faint */
+            pointer-events: none; /* Allows clicking through it */
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1; /* Ensures text is above watermark */
         }
 
         .hero h1 {
@@ -78,9 +110,7 @@
             color: var(--text-dim);
         }
 
-        /* Updated Button Style */
         .btn {
-            /* Gradient button using logo colors */
             background: linear-gradient(45deg, var(--primary-purple), var(--accent-cyan));
             color: #ffffff;
             padding: 12px 30px;
@@ -100,7 +130,6 @@
             box-shadow: 0 0 20px rgba(168, 85, 247, 0.7);
         }
 
-        /* Sections */
         section {
             padding: 80px 20px;
             max-width: 1000px;
@@ -136,8 +165,20 @@
             box-shadow: 0 0 15px rgba(14, 215, 181, 0.2);
         }
 
-        .card h3 {
+        /* Testimonial Specific Styles */
+        .testimonial-text {
+            font-style: italic;
+            color: #ccc;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-author {
             color: var(--accent-cyan);
+            font-weight: bold;
+            text-align: right;
+            border-top: 1px solid #333;
+            padding-top: 10px;
         }
 
         .highlight {
@@ -145,7 +186,6 @@
             font-weight: bold;
         }
 
-        /* CTA Section */
         .cta-section {
             background: var(--dark-sec);
             text-align: center;
@@ -163,7 +203,6 @@
             border-top: 1px solid #333;
         }
 
-        /* Interactive Elements */
         .hidden-content {
             display: none;
             margin-top: 15px;
@@ -180,96 +219,48 @@
 <body>
 
     <nav>
-        <div class="logo">[ Hacking Hub ]</div>
+        <div class="nav-logo-container">
+            <img src="Canva Design.jpg" alt="HH Logo" class="nav-logo-img">
+            <div class="nav-logo-text">Hacking Hub</div>
+        </div>
         <div class="nav-links">
             <a href="#mission">Mission</a>
-            <a href="#challenge">The Challenge</a>
+            <a href="#reviews">Reviews</a>
             <a href="#book-session" style="color: var(--accent-cyan);">Book Session</a>
         </div>
     </nav>
 
     <div class="hero">
-        <h1>Launch Your Cyber Career</h1>
-        <p>A private community of ambitious individuals committed to building careers in cybersecurity[cite: 3].</p>
-        <a href="#book-session" class="btn">Apply Here</a>
+        <img src="Canva Design.jpg" class="watermark" alt="HH Background">
+        
+        <div class="hero-content">
+            <h1>Launch Your Cyber Career</h1>
+            <p>A private community of ambitious individuals committed to building careers in cybersecurity.</p>
+            <a href="#book-session" class="btn">Apply Here</a>
+        </div>
     </div>
 
     <section id="mission">
         <h2>Our Mission</h2>
-        <p>To create a high-performance environment where members learn daily, practice hands-on, grow their professional presence, and hold each other accountable[cite: 5].</p>
+        <p>To create a high-performance environment where members learn daily, practice hands-on, grow their professional presence, and hold each other accountable.</p>
         <div class="grid">
             <div class="card">
                 <h3>🚀 Accountability</h3>
-                <p>Daily check-ins and tracking to ensure consistent progress[cite: 22].</p>
+                <p>Daily check-ins and tracking to ensure consistent progress.</p>
             </div>
             <div class="card">
                 <h3>🤝 Collaboration</h3>
-                <p>Support each other’s growth with no gatekeeping of knowledge[cite: 34].</p>
+                <p>Support each other’s growth with no gatekeeping of knowledge.</p>
             </div>
             <div class="card">
                 <h3>🎓 Career Prep</h3>
-                <p>CV reviews, mock interviews, and personalized roadmaps[cite: 42, 44, 45].</p>
+                <p>CV reviews, mock interviews, and personalized roadmaps.</p>
             </div>
         </div>
     </section>
 
     <section id="challenge">
         <h2>The 8-Week Accountability Challenge</h2>
-        <p>Every quarter, we run a structured challenge designed to boost your skills, visibility, and consistency[cite: 8].</p>
+        <p>Every quarter, we run a structured challenge designed to boost your skills, visibility, and consistency.</p>
         
         <div class="card" style="border-color: var(--primary-purple);">
-            <h3>Daily Rules & Consequences</h3>
-            <ul>
-                <li><strong>Check-in:</strong> Provide an update between 6:00 PM and 11:00 PM (local time)[cite: 22].</li>
-                <li><strong>Task Completion:</strong> At least one selected task must be done by the end of the day[cite: 23].</li>
-                <li><strong>The Consequence:</strong> Missing 3 consecutive days results in removal from the group[cite: 24].</li>
-            </ul>
-            <br>
-            <button class="btn" style="background: var(--dark-bg); border: 1px solid var(--accent-cyan); color: var(--accent-cyan);" onclick="toggleRules()">View Example Tasks</button>
-            <div id="tasks" class="hidden-content">
-                <ul>
-                    <li>📚 Study 1 hour toward a certification (Security+, Azure, AWS, etc.)[cite: 16].</li>
-                    <li>💻 Complete a TryHackMe or LetsDefend room[cite: 17].</li>
-                    <li>🎧 Listen to a cybersecurity podcast and post a summary on LinkedIn[cite: 18, 19].</li>
-                    <li>🤝 Attend an in-person event and share key takeaways on LinkedIn[cite: 20].</li>
-                </ul>
-            </div>
-        </div>
-        <br>
-        <div class="card">
-            <h3>🏆 The Prize</h3>
-            <p>The member with the most completed TryHackMe rooms wins a <span class="highlight">free certification voucher</span> of their choice[cite: 25].</p>
-        </div>
-    </section>
-
-    <section id="book-session" class="cta-section">
-        <h2>Ready to Commit?</h2>
-        <p>Your success depends on your own dedication and effort[cite: 101]. If you are ready to show up daily, it's time to build your future.</p>
-        
-        <div class="card" style="max-width: 600px; margin: 0 auto; background: var(--dark-bg);">
-            <h3>Book Your 1-on-1 Roadmap Session</h3>
-            <p>This essential 45-minute session is where we establish your personalized 8-Week Challenge plan and create your 12-month career roadmap[cite: 150, 151].</p>
-            <p><em>This meeting is non-negotiable for all new members[cite: 152].</em></p>
-            <br>
-            <button class="btn" onclick="alert('Redirecting to Calendly...')">Schedule Now</button>
-        </div>
-    </section>
-
-    <footer>
-        <p>Hacking Hub &copy; 2024. Collaboration | Respect | Excellence[cite: 32].</p>
-        <p><em>"Consistent effort beats occasional bursts of motivation." [cite: 105]</em></p>
-    </footer>
-
-    <script>
-        function toggleRules() {
-            var x = document.getElementById("tasks");
-            if (x.style.display === "block") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "block";
-            }
-        }
-    </script>
-
-</body>
-</html>
