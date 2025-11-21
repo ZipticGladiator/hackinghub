@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacking Hub | Build Your Cyber Future</title>
+    <style>
+        :root {
+            --primary: #00ff41; /* Matrix Green */
+            --dark: #0d0d0d;
+            --dark-sec: #1a1a1a;
+            --text: #e0e0e0;
+            --accent: #008F11;
+        }
+        
+        body {
+            font-family: 'Courier New', Courier, monospace; /* Hacker aesthetic */
+            background-color: var(--dark);
+            color: var(--text);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--dark-sec);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            margin-left: 20px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: #000;
+            padding: 10px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: transform 0.2s;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        /* Cards (Benefits/Pricing) */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--dark-sec);
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Pricing Table */
+        .price-card {
+            text-align: center;
+            border: 2px solid var(--accent);
+        }
+
+        .price {
+            font-size: 2rem;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+
+        /* Onboarding Steps */
+        .step {
+            background: #111;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-left: 4px solid var(--primary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--dark-sec);
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* Interactive Elements */
+        .hidden-content {
+            display: none;
+            margin-top: 10px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">&lt;Hacking Hub /&gt;</div>
+        <div class="nav-links">
+            <a href="#mission">Mission</a>
+            <a href="#challenge">The Challenge</a>
+            <a href="#pricing">Membership</a>
+            <a href="#onboarding">Start Now</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Launch Your Cyber Career</h1>
+        <p>A private community of ambitious, forward-thinking individuals committed to building or advancing their careers in cybersecurity.</p>
+        <a href="#onboarding" class="btn">Join the Community</a>
+    </div>
+
+    <section id="mission">
+        <h2>Our Mission</h2>
+        <p>To create a high-performance environment where members <strong>learn daily, practice hands-on, grow their professional presence, and hold each other accountable.</strong></p>
+        <div class="grid">
+            <div class="card">
+                <h3>🚀 Accountability</h3>
+                <p>Daily check-ins and tracking to ensure consistent progress.</p>
+            </div>
+            <div class="card">
+                <h3>🤝 Network</h3>
+                <p>Like-minded peers and mentors to support your growth.</p>
+            </div>
+            <div class="card">
+                <h3>🎓 Career Prep</h3>
+                <p>CV reviews, interview prep, and personalized roadmaps.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="challenge">
+        <h2>The 8-Week Accountability Challenge</h2>
+        <p>Every quarter, we run a structured challenge designed to boost your skills and visibility.</p>
+        
+        <div class="card">
+            <h3>Daily Rules</h3>
+            <ul>
+                <li><strong>Check-in:</strong> 6:00 PM to 11:00 PM local time.</li>
+                <li><strong>Task:</strong> Complete at least one learning or branding task daily.</li>
+                <li><strong>Consequence:</strong> Missing 3 consecutive days = Removal.</li>
+            </ul>
+            <button class="btn" onclick="toggleRules()">View Example Tasks</button>
+            <div id="tasks" class="hidden-content">
+                <ul>
+                    <li>📚 Study 1 hour toward a certification (Security+, Azure, AWS).</li>
+                    <li>💻 Complete a TryHackMe or LetsDefend room.</li>
+                    <li>🎧 Listen to a cybersecurity podcast and post a summary on LinkedIn.</li>
+                    <li>🤝 Attend an in-person event and share takeaways.</li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <div class="card">
+            <h3>🏆 The Prize</h3>
+            <p>The member with the most completed TryHackMe rooms wins a <span class="highlight">free certification voucher</span> of their choice.</p>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <h2>Membership Options</h2>
+        <p>Choose the option that fits your commitment level.</p>
+        <div class="grid">
+            <div class="card price-card">
+                <h3>Flexible Access</h3>
+                <div class="price">R500 / month</div>
+                <p>Ideal for testing the community fit.</p>
+                <p>Renews monthly.</p>
+                <p><em>Matches permanent fee after 6 months.</em></p>
+            </div>
+            <div class="card price-card">
+                <h3>Permanent Access</h3>
+                <div class="price">R3,000</div>
+                <p class="highlight">Best Value (Save 50%)</p>
+                <p>One-time fee for lifetime access.</p>
+                <p>Ideal for long-term career growth.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="onboarding">
+        <h2>🚀 New Member Protocol</h2>
+        <p>Complete these 3 steps to activate your membership and book your roadmap session.</p>
+        
+        <div class="step">
+            <h3>Step 1: Member Data Form</h3>
+            <p>Submit your details for team assignment and tracking.</p>
+            <button class="btn" onclick="alert('Redirecting to Member Data Form...')">Open Form</button>
+        </div>
+
+        <div class="step">
+            <h3>Step 2: Introduce Yourself</h3>
+            <p>Post your introduction in the WhatsApp group using the required format (Name, Goal, Background, Focus).</p>
+        </div>
+
+        <div class="step">
+            <h3>Step 3: Book Strategy Session</h3>
+            <p>Once steps 1 & 2 are done, book your 1-on-1 Career Roadmap Strategy Session.</p>
+            <button class="btn" onclick="alert('Redirecting to Calendly...')">Book Session</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>Hacking Hub &copy; 2024. Collaboration | Respect | Excellence</p>
+        <p><em>"Consistent effort beats occasional bursts of motivation."</em></p>
+    </footer>
+
+    <script>
+        function toggleRules() {
+            var x = document.getElementById("tasks");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+</html>
