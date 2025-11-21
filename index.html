@@ -6,17 +6,19 @@
     <title>Hacking Hub | Build Your Cyber Future</title>
     <style>
         :root {
-            --primary: #00ff41; /* Matrix Green */
-            --dark: #0d0d0d;
-            --dark-sec: #1a1a1a;
-            --text: #e0e0e0;
-            --accent: #008F11;
+            /* Color scheme based on the provided logo */
+            --primary-purple: #a855f7; /* Neon Purple for primary highlights */
+            --accent-cyan: #0ed7b5; /* Neon Cyan for accents and gradients */
+            --dark-bg: #050505; /* Deep black background */
+            --dark-sec: #121212; /* Slightly lighter dark for cards/nav */
+            --text-light: #ffffff; /* Bright white text */
+            --text-dim: #aaaaaa; /* Dimmed text */
         }
         
         body {
-            font-family: 'Courier New', Courier, monospace; /* Hacker aesthetic */
-            background-color: var(--dark);
-            color: var(--text);
+            font-family: 'Courier New', Courier, monospace; /* Retaining hacker aesthetic */
+            background-color: var(--dark-bg);
+            color: var(--text-light);
             margin: 0;
             line-height: 1.6;
         }
@@ -28,252 +30,234 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid var(--primary);
+            border-bottom: 2px solid var(--primary-purple);
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(168, 85, 247, 0.3);
         }
 
         .logo {
             font-weight: bold;
             font-size: 1.5rem;
-            color: var(--primary);
+            color: var(--accent-cyan);
             text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .nav-links a {
-            color: var(--text);
+            color: var(--text-light);
             text-decoration: none;
             margin-left: 20px;
             transition: 0.3s;
+            font-size: 0.9rem;
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--accent-cyan);
         }
 
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 100px 20px;
-            background: radial-gradient(circle, #1a1a1a 0%, #000000 100%);
+            padding: 120px 20px;
+            /* Subtle purple/blue gradient background */
+            background: radial-gradient(circle at center, #1a1a2e 0%, var(--dark-bg) 100%);
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
         }
 
         .hero p {
             font-size: 1.2rem;
             max-width: 600px;
-            margin: 0 auto 30px auto;
+            margin: 0 auto 40px auto;
+            color: var(--text-dim);
         }
 
+        /* Updated Button Style */
         .btn {
-            background: var(--primary);
-            color: #000;
-            padding: 10px 25px;
+            /* Gradient button using logo colors */
+            background: linear-gradient(45deg, var(--primary-purple), var(--accent-cyan));
+            color: #ffffff;
+            padding: 12px 30px;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 5px;
-            transition: transform 0.2s;
+            border-radius: 4px;
+            transition: all 0.3s ease;
             display: inline-block;
             cursor: pointer;
             border: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .btn:hover {
-            transform: scale(1.05);
-            background: var(--accent);
-            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.7);
         }
 
         /* Sections */
         section {
-            padding: 60px 20px;
+            padding: 80px 20px;
             max-width: 1000px;
             margin: 0 auto;
         }
 
         h2 {
-            color: var(--primary);
-            border-bottom: 1px solid var(--accent);
-            padding-bottom: 10px;
-            margin-bottom: 30px;
+            color: var(--primary-purple);
+            border-bottom: 2px solid var(--accent-cyan);
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            display: inline-block;
         }
 
-        /* Cards (Benefits/Pricing) */
+        /* Cards */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 25px;
         }
 
         .card {
             background: var(--dark-sec);
-            padding: 20px;
+            padding: 25px;
             border: 1px solid #333;
             border-radius: 8px;
+            transition: all 0.3s ease;
         }
 
         .card:hover {
-            border-color: var(--primary);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(14, 215, 181, 0.2);
+        }
+
+        .card h3 {
+            color: var(--accent-cyan);
         }
 
         .highlight {
-            color: var(--primary);
+            color: var(--primary-purple);
             font-weight: bold;
         }
 
-        /* Pricing Table */
-        .price-card {
+        /* CTA Section */
+        .cta-section {
+            background: var(--dark-sec);
             text-align: center;
-            border: 2px solid var(--accent);
-        }
-
-        .price {
-            font-size: 2rem;
-            color: var(--primary);
-            margin: 20px 0;
-        }
-
-        /* Onboarding Steps */
-        .step {
-            background: #111;
-            margin-bottom: 15px;
-            padding: 15px;
-            border-left: 4px solid var(--primary);
+            border-top: 2px solid var(--primary-purple);
+            border-bottom: 2px solid var(--accent-cyan);
         }
 
         footer {
             text-align: center;
-            padding: 20px;
-            background: var(--dark-sec);
+            padding: 30px;
+            background: #000;
             margin-top: 50px;
             font-size: 0.9rem;
-            color: #888;
+            color: var(--text-dim);
+            border-top: 1px solid #333;
         }
 
         /* Interactive Elements */
         .hidden-content {
             display: none;
-            margin-top: 10px;
-            color: #ccc;
+            margin-top: 15px;
+            color: var(--text-dim);
+            border-top: 1px solid #333;
+            padding-top: 15px;
+        }
+        
+        ul li {
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">&lt;Hacking Hub /&gt;</div>
+        <div class="logo">[ Hacking Hub ]</div>
         <div class="nav-links">
             <a href="#mission">Mission</a>
             <a href="#challenge">The Challenge</a>
-            <a href="#pricing">Membership</a>
-            <a href="#onboarding">Start Now</a>
+            <a href="#book-session" style="color: var(--accent-cyan);">Book Session</a>
         </div>
     </nav>
 
     <div class="hero">
         <h1>Launch Your Cyber Career</h1>
-        <p>A private community of ambitious, forward-thinking individuals committed to building or advancing their careers in cybersecurity.</p>
-        <a href="#onboarding" class="btn">Join the Community</a>
+        <p>A private community of ambitious individuals committed to building careers in cybersecurity[cite: 3].</p>
+        <a href="#book-session" class="btn">Apply Here</a>
     </div>
 
     <section id="mission">
         <h2>Our Mission</h2>
-        <p>To create a high-performance environment where members <strong>learn daily, practice hands-on, grow their professional presence, and hold each other accountable.</strong></p>
+        <p>To create a high-performance environment where members learn daily, practice hands-on, grow their professional presence, and hold each other accountable[cite: 5].</p>
         <div class="grid">
             <div class="card">
                 <h3>🚀 Accountability</h3>
-                <p>Daily check-ins and tracking to ensure consistent progress.</p>
+                <p>Daily check-ins and tracking to ensure consistent progress[cite: 22].</p>
             </div>
             <div class="card">
-                <h3>🤝 Network</h3>
-                <p>Like-minded peers and mentors to support your growth.</p>
+                <h3>🤝 Collaboration</h3>
+                <p>Support each other’s growth with no gatekeeping of knowledge[cite: 34].</p>
             </div>
             <div class="card">
                 <h3>🎓 Career Prep</h3>
-                <p>CV reviews, interview prep, and personalized roadmaps.</p>
+                <p>CV reviews, mock interviews, and personalized roadmaps[cite: 42, 44, 45].</p>
             </div>
         </div>
     </section>
 
     <section id="challenge">
         <h2>The 8-Week Accountability Challenge</h2>
-        <p>Every quarter, we run a structured challenge designed to boost your skills and visibility.</p>
+        <p>Every quarter, we run a structured challenge designed to boost your skills, visibility, and consistency[cite: 8].</p>
         
-        <div class="card">
-            <h3>Daily Rules</h3>
+        <div class="card" style="border-color: var(--primary-purple);">
+            <h3>Daily Rules & Consequences</h3>
             <ul>
-                <li><strong>Check-in:</strong> 6:00 PM to 11:00 PM local time.</li>
-                <li><strong>Task:</strong> Complete at least one learning or branding task daily.</li>
-                <li><strong>Consequence:</strong> Missing 3 consecutive days = Removal.</li>
+                <li><strong>Check-in:</strong> Provide an update between 6:00 PM and 11:00 PM (local time)[cite: 22].</li>
+                <li><strong>Task Completion:</strong> At least one selected task must be done by the end of the day[cite: 23].</li>
+                <li><strong>The Consequence:</strong> Missing 3 consecutive days results in removal from the group[cite: 24].</li>
             </ul>
-            <button class="btn" onclick="toggleRules()">View Example Tasks</button>
+            <br>
+            <button class="btn" style="background: var(--dark-bg); border: 1px solid var(--accent-cyan); color: var(--accent-cyan);" onclick="toggleRules()">View Example Tasks</button>
             <div id="tasks" class="hidden-content">
                 <ul>
-                    <li>📚 Study 1 hour toward a certification (Security+, Azure, AWS).</li>
-                    <li>💻 Complete a TryHackMe or LetsDefend room.</li>
-                    <li>🎧 Listen to a cybersecurity podcast and post a summary on LinkedIn.</li>
-                    <li>🤝 Attend an in-person event and share takeaways.</li>
+                    <li>📚 Study 1 hour toward a certification (Security+, Azure, AWS, etc.)[cite: 16].</li>
+                    <li>💻 Complete a TryHackMe or LetsDefend room[cite: 17].</li>
+                    <li>🎧 Listen to a cybersecurity podcast and post a summary on LinkedIn[cite: 18, 19].</li>
+                    <li>🤝 Attend an in-person event and share key takeaways on LinkedIn[cite: 20].</li>
                 </ul>
             </div>
         </div>
         <br>
         <div class="card">
             <h3>🏆 The Prize</h3>
-            <p>The member with the most completed TryHackMe rooms wins a <span class="highlight">free certification voucher</span> of their choice.</p>
+            <p>The member with the most completed TryHackMe rooms wins a <span class="highlight">free certification voucher</span> of their choice[cite: 25].</p>
         </div>
     </section>
 
-    <section id="pricing">
-        <h2>Membership Options</h2>
-        <p>Choose the option that fits your commitment level.</p>
-        <div class="grid">
-            <div class="card price-card">
-                <h3>Flexible Access</h3>
-                <div class="price">R500 / month</div>
-                <p>Ideal for testing the community fit.</p>
-                <p>Renews monthly.</p>
-                <p><em>Matches permanent fee after 6 months.</em></p>
-            </div>
-            <div class="card price-card">
-                <h3>Permanent Access</h3>
-                <div class="price">R3,000</div>
-                <p class="highlight">Best Value (Save 50%)</p>
-                <p>One-time fee for lifetime access.</p>
-                <p>Ideal for long-term career growth.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="onboarding">
-        <h2>🚀 New Member Protocol</h2>
-        <p>Complete these 3 steps to activate your membership and book your roadmap session.</p>
+    <section id="book-session" class="cta-section">
+        <h2>Ready to Commit?</h2>
+        <p>Your success depends on your own dedication and effort[cite: 101]. If you are ready to show up daily, it's time to build your future.</p>
         
-        <div class="step">
-            <h3>Step 1: Member Data Form</h3>
-            <p>Submit your details for team assignment and tracking.</p>
-            <button class="btn" onclick="alert('Redirecting to Member Data Form...')">Open Form</button>
-        </div>
-
-        <div class="step">
-            <h3>Step 2: Introduce Yourself</h3>
-            <p>Post your introduction in the WhatsApp group using the required format (Name, Goal, Background, Focus).</p>
-        </div>
-
-        <div class="step">
-            <h3>Step 3: Book Strategy Session</h3>
-            <p>Once steps 1 & 2 are done, book your 1-on-1 Career Roadmap Strategy Session.</p>
-            <button class="btn" onclick="alert('Redirecting to Calendly...')">Book Session</button>
+        <div class="card" style="max-width: 600px; margin: 0 auto; background: var(--dark-bg);">
+            <h3>Book Your 1-on-1 Roadmap Session</h3>
+            <p>This essential 45-minute session is where we establish your personalized 8-Week Challenge plan and create your 12-month career roadmap[cite: 150, 151].</p>
+            <p><em>This meeting is non-negotiable for all new members[cite: 152].</em></p>
+            <br>
+            <button class="btn" onclick="alert('Redirecting to Calendly...')">Schedule Now</button>
         </div>
     </section>
 
     <footer>
-        <p>Hacking Hub &copy; 2024. Collaboration | Respect | Excellence</p>
-        <p><em>"Consistent effort beats occasional bursts of motivation."</em></p>
+        <p>Hacking Hub &copy; 2024. Collaboration | Respect | Excellence[cite: 32].</p>
+        <p><em>"Consistent effort beats occasional bursts of motivation." [cite: 105]</em></p>
     </footer>
 
     <script>
