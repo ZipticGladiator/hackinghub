@@ -1,8 +1,8 @@
 :root {
-    --primary-purple: #a855f7;
+    --primary-lime: #ccff00;
     --accent-cyan: #0ed7b5;
-    --dark-bg: #050505;
-    --dark-sec: #121212;
+    --dark-bg: #0a0e17;
+    --dark-sec: #151b2b;
     --text-light: #ffffff;
     --text-dim: #aaaaaa;
 }
@@ -24,11 +24,11 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid var(--primary-purple);
+    border-bottom: 2px solid var(--primary-lime);
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(168, 85, 247, 0.3);
+    box-shadow: 0 2px 10px rgba(204, 255, 0, 0.3);
 }
 
 /* Logo Styling for Corner */
@@ -102,7 +102,7 @@ nav {
 .hero h1 {
     font-size: 3.5rem;
     margin-bottom: 10px;
-    text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+    text-shadow: 0 0 10px rgba(204, 255, 0, 0.5);
 }
 
 .hero p {
@@ -113,7 +113,7 @@ nav {
 }
 
 .btn {
-    background: linear-gradient(45deg, var(--primary-purple), var(--accent-cyan));
+    background: linear-gradient(45deg, var(--primary-lime), var(--accent-cyan));
     color: #ffffff;
     padding: 12px 30px;
     text-decoration: none;
@@ -129,7 +129,7 @@ nav {
 
 .btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.7);
+    box-shadow: 0 0 20px rgba(204, 255, 0, 0.7);
 }
 
 section {
@@ -139,7 +139,7 @@ section {
 }
 
 h2 {
-    color: var(--primary-purple);
+    color: var(--primary-lime);
     border-bottom: 2px solid var(--accent-cyan);
     padding-bottom: 15px;
     margin-bottom: 40px;
@@ -184,14 +184,14 @@ h2 {
 }
 
 .highlight {
-    color: var(--primary-purple);
+    color: var(--primary-lime);
     font-weight: bold;
 }
 
 .cta-section {
     background: var(--dark-sec);
     text-align: center;
-    border-top: 2px solid var(--primary-purple);
+    border-top: 2px solid var(--primary-lime);
     border-bottom: 2px solid var(--accent-cyan);
 }
 
