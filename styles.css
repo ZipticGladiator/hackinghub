@@ -1,0 +1,218 @@
+:root {
+    --primary-purple: #a855f7;
+    --accent-cyan: #0ed7b5;
+    --dark-bg: #050505;
+    --dark-sec: #121212;
+    --text-light: #ffffff;
+    --text-dim: #aaaaaa;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    margin: 0;
+    line-height: 1.6;
+    overflow-x: hidden;
+    /* Prevents scrollbar if watermark is too big */
+}
+
+/* Navigation */
+nav {
+    background: var(--dark-sec);
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--primary-purple);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(168, 85, 247, 0.3);
+}
+
+/* Logo Styling for Corner */
+.nav-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-logo-img {
+    height: 50px;
+    /* Adjust based on preference */
+    width: auto;
+    border-radius: 50%;
+    /* Optional: Makes it circular if square */
+    border: 2px solid var(--accent-cyan);
+}
+
+.nav-logo-text {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--accent-cyan);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    margin-left: 20px;
+    transition: 0.3s;
+    font-size: 0.9rem;
+}
+
+.nav-links a:hover {
+    color: var(--accent-cyan);
+    text-shadow: 0 0 5px var(--accent-cyan);
+}
+
+/* Hero Section with Watermark Background */
+.hero {
+    position: relative;
+    /* Needed for watermark positioning */
+    text-align: center;
+    padding: 120px 20px;
+    background: radial-gradient(circle at center, #1a1a2e 0%, var(--dark-bg) 100%);
+    overflow: hidden;
+}
+
+/* The Background Logo Watermark */
+.watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    /* Size of background logo */
+    opacity: 0.1;
+    /* Very faint */
+    pointer-events: none;
+    /* Allows clicking through it */
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    /* Ensures text is above watermark */
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    color: var(--text-dim);
+}
+
+.btn {
+    background: linear-gradient(45deg, var(--primary-purple), var(--accent-cyan));
+    color: #ffffff;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.7);
+}
+
+section {
+    padding: 80px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h2 {
+    color: var(--primary-purple);
+    border-bottom: 2px solid var(--accent-cyan);
+    padding-bottom: 15px;
+    margin-bottom: 40px;
+    font-size: 2rem;
+    display: inline-block;
+}
+
+/* Cards */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: var(--dark-sec);
+    padding: 25px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 15px rgba(14, 215, 181, 0.2);
+}
+
+/* Testimonial Specific Styles */
+.testimonial-text {
+    font-style: italic;
+    color: #ccc;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.testimonial-author {
+    color: var(--accent-cyan);
+    font-weight: bold;
+    text-align: right;
+    border-top: 1px solid #333;
+    padding-top: 10px;
+}
+
+.highlight {
+    color: var(--primary-purple);
+    font-weight: bold;
+}
+
+.cta-section {
+    background: var(--dark-sec);
+    text-align: center;
+    border-top: 2px solid var(--primary-purple);
+    border-bottom: 2px solid var(--accent-cyan);
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #000;
+    margin-top: 50px;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    border-top: 1px solid #333;
+}
+
+.hidden-content {
+    display: none;
+    margin-top: 15px;
+    color: var(--text-dim);
+    border-top: 1px solid #333;
+    padding-top: 15px;
+}
+
+ul li {
+    margin-bottom: 10px;
+}

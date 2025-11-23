@@ -1,226 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hacking Hub | Build Your Cyber Future</title>
-    <style>
-        :root {
-            --primary-purple: #a855f7; 
-            --accent-cyan: #0ed7b5; 
-            --dark-bg: #050505; 
-            --dark-sec: #121212; 
-            --text-light: #ffffff; 
-            --text-dim: #aaaaaa; 
-        }
-        
-        body {
-            font-family: 'Courier New', Courier, monospace; 
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            margin: 0;
-            line-height: 1.6;
-            overflow-x: hidden; /* Prevents scrollbar if watermark is too big */
-        }
-
-        /* Navigation */
-        nav {
-            background: var(--dark-sec);
-            padding: 0.5rem 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid var(--primary-purple);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(168, 85, 247, 0.3);
-        }
-
-        /* Logo Styling for Corner */
-        .nav-logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .nav-logo-img {
-            height: 50px; /* Adjust based on preference */
-            width: auto;
-            border-radius: 50%; /* Optional: Makes it circular if square */
-            border: 2px solid var(--accent-cyan);
-        }
-
-        .nav-logo-text {
-            font-weight: bold;
-            font-size: 1.5rem;
-            color: var(--accent-cyan);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            margin-left: 20px;
-            transition: 0.3s;
-            font-size: 0.9rem;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-cyan);
-        }
-
-        /* Hero Section with Watermark Background */
-        .hero {
-            position: relative; /* Needed for watermark positioning */
-            text-align: center;
-            padding: 120px 20px;
-            background: radial-gradient(circle at center, #1a1a2e 0%, var(--dark-bg) 100%);
-            overflow: hidden;
-        }
-
-        /* The Background Logo Watermark */
-        .watermark {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 400px; /* Size of background logo */
-            opacity: 0.1; /* Very faint */
-            pointer-events: none; /* Allows clicking through it */
-            z-index: 0;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1; /* Ensures text is above watermark */
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 40px auto;
-            color: var(--text-dim);
-        }
-
-        .btn {
-            background: linear-gradient(45deg, var(--primary-purple), var(--accent-cyan));
-            color: #ffffff;
-            padding: 12px 30px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            display: inline-block;
-            cursor: pointer;
-            border: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.7);
-        }
-
-        section {
-            padding: 80px 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        h2 {
-            color: var(--primary-purple);
-            border-bottom: 2px solid var(--accent-cyan);
-            padding-bottom: 15px;
-            margin-bottom: 40px;
-            font-size: 2rem;
-            display: inline-block;
-        }
-
-        /* Cards */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: var(--dark-sec);
-            padding: 25px;
-            border: 1px solid #333;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 15px rgba(14, 215, 181, 0.2);
-        }
-
-        /* Testimonial Specific Styles */
-        .testimonial-text {
-            font-style: italic;
-            color: #ccc;
-            font-size: 1rem;
-            margin-bottom: 15px;
-        }
-
-        .testimonial-author {
-            color: var(--accent-cyan);
-            font-weight: bold;
-            text-align: right;
-            border-top: 1px solid #333;
-            padding-top: 10px;
-        }
-
-        .highlight {
-            color: var(--primary-purple);
-            font-weight: bold;
-        }
-
-        .cta-section {
-            background: var(--dark-sec);
-            text-align: center;
-            border-top: 2px solid var(--primary-purple);
-            border-bottom: 2px solid var(--accent-cyan);
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            background: #000;
-            margin-top: 50px;
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            border-top: 1px solid #333;
-        }
-
-        .hidden-content {
-            display: none;
-            margin-top: 15px;
-            color: var(--text-dim);
-            border-top: 1px solid #333;
-            padding-top: 15px;
-        }
-        
-        ul li {
-            margin-bottom: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
     <nav>
         <div class="nav-logo-container">
-            <img src="Canva Design.png" alt="HH Logo" class="nav-logo-img">
+            <img src="images/Canva Design.png" alt="HH Logo" class="nav-logo-img">
             <div class="nav-logo-text">Hacking Hub</div>
         </div>
         <div class="nav-links">
@@ -231,8 +23,8 @@
     </nav>
 
     <div class="hero">
-        <img src="Canva Design.png" class="watermark" alt="HH Background">
-        
+        <img src="images/Canva Design.png" class="watermark" alt="HH Background">
+
         <div class="hero-content">
             <h1>Launch Your Cyber Career</h1>
             <p>A private community of ambitious individuals committed to building careers in cybersecurity.</p>
@@ -242,7 +34,8 @@
 
     <section id="mission">
         <h2>Our Mission</h2>
-        [cite_start]<p>To create a high-performance environment where members learn daily, practice hands-on, grow their professional presence, and hold each other accountable[cite: 5].</p>
+        [cite_start]<p>To create a high-performance environment where members learn daily, practice hands-on, grow their
+            professional presence, and hold each other accountable[cite: 5].</p>
         <div class="grid">
             <div class="card">
                 <h3>🚀 Accountability</h3>
@@ -261,16 +54,21 @@
 
     <section id="challenge">
         <h2>The 8-Week Accountability Challenge</h2>
-        [cite_start]<p>Every quarter, we run a structured challenge designed to boost your skills, visibility, and consistency[cite: 8].</p>
-        
+        [cite_start]<p>Every quarter, we run a structured challenge designed to boost your skills, visibility, and
+            consistency[cite: 8].</p>
+
         <div class="card" style="border-color: var(--primary-purple);">
             <h3>Daily Rules</h3>
             <ul>
-                [cite_start]<li><strong>Check-in:</strong> Provide an update between 6:00 PM and 11:00 PM (local time)[cite: 22].</li>
-                [cite_start]<li><strong>Task Completion:</strong> At least one selected task must be done by the end of the day[cite: 23].</li>
+                [cite_start]<li><strong>Check-in:</strong> Provide an update between 6:00 PM and 11:00 PM (local
+                    time)[cite: 22].</li>
+                [cite_start]<li><strong>Task Completion:</strong> At least one selected task must be done by the end of
+                    the day[cite: 23].</li>
             </ul>
             <br>
-            <button class="btn" style="background: var(--dark-bg); border: 1px solid var(--accent-cyan); color: var(--accent-cyan);" onclick="toggleRules()">View Example Tasks</button>
+            <button class="btn"
+                style="background: var(--dark-bg); border: 1px solid var(--accent-cyan); color: var(--accent-cyan);"
+                onclick="toggleRules()">View Example Tasks</button>
             <div id="tasks" class="hidden-content">
                 <ul>
                     [cite_start]<li>📚 Study 1 hour toward a certification (Security+, Azure, AWS, etc.)[cite: 16].</li>
@@ -283,7 +81,8 @@
         <br>
         <div class="card">
             <h3>🏆 The Prize</h3>
-            [cite_start]<p>The member with the most completed TryHackMe rooms wins a <span class="highlight">free certification voucher</span> of their choice[cite: 25].</p>
+            [cite_start]<p>The member with the most completed TryHackMe rooms wins a <span class="highlight">free
+                    certification voucher</span> of their choice[cite: 25].</p>
         </div>
     </section>
 
@@ -292,15 +91,18 @@
         <p>See what our members say about the Hacking Hub environment.</p>
         <div class="grid">
             <div class="card">
-                <p class="testimonial-text">"The accountability here is unlike anywhere else. I finally passed my Security+ because I had a team pushing me every single day."</p>
+                <p class="testimonial-text">"The accountability here is unlike anywhere else. I finally passed my
+                    Security+ because I had a team pushing me every single day."</p>
                 <div class="testimonial-author">- Hacking Hub Member</div>
             </div>
             <div class="card">
-                <p class="testimonial-text">"I struggled with consistency for years. The 8-week challenge gave me the structure I needed to land my first analyst role."</p>
+                <p class="testimonial-text">"I struggled with consistency for years. The 8-week challenge gave me the
+                    structure I needed to land my first analyst role."</p>
                 <div class="testimonial-author">- Junior Analyst</div>
             </div>
             <div class="card">
-                <p class="testimonial-text">"No gatekeeping, just pure support. The mock interviews and roadmap sessions were a game changer for my confidence."</p>
+                <p class="testimonial-text">"No gatekeeping, just pure support. The mock interviews and roadmap sessions
+                    were a game changer for my confidence."</p>
                 <div class="testimonial-author">- HH Blue Team Member</div>
             </div>
         </div>
@@ -308,11 +110,13 @@
 
     <section id="book-session" class="cta-section">
         <h2>Ready to Commit?</h2>
-        [cite_start]<p>Your success depends on your own dedication and effort[cite: 101]. If you are ready to show up daily, it's time to build your future.</p>
-        
+        [cite_start]<p>Your success depends on your own dedication and effort[cite: 101]. If you are ready to show up
+            daily, it's time to build your future.</p>
+
         <div class="card" style="max-width: 600px; margin: 0 auto; background: var(--dark-bg);">
             <h3>Book Your 1-on-1 Roadmap Session</h3>
-            [cite_start]<p>This essential 45-minute session is where we establish your personalized 8-Week Challenge plan and create your 12-month career roadmap[cite: 151].</p>
+            [cite_start]<p>This essential 45-minute session is where we establish your personalized 8-Week Challenge
+                plan and create your 12-month career roadmap[cite: 151].</p>
             [cite_start]<p><em>This meeting is non-negotiable for all new members[cite: 152].</em></p>
             <br>
             <button class="btn" onclick="alert('Redirecting to Calendly...')">Schedule Now</button>
@@ -324,16 +128,8 @@
         [cite_start]<p><em>"Consistent effort beats occasional bursts of motivation." [cite: 105]</em></p>
     </footer>
 
-    <script>
-        function toggleRules() {
-            var x = document.getElementById("tasks");
-            if (x.style.display === "block") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "block";
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
