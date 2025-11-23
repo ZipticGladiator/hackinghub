@@ -29,4 +29,4 @@ To view the website locally:
 Connect with the founder on [LinkedIn](https://www.linkedin.com/in/siyambongagladile-577b5a211/).
 
 ---
-&copy; 2024 Hacking Hub. Collaboration | Respect | Excellence.
+&copy; 2025 Hacking Hub. Collaboration | Respect | Excellence.
