@@ -4,141 +4,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hacking Hub | Build Your Cyber Future</title>
+    <title>Hacking Hub | Cyber Career Accelerator</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
 
-    <nav>
-        <div class="nav-logo-container">
-            <img src="images/Canva Design.png" alt="HH Logo" class="nav-logo-img">
-            <div class="nav-logo-text">Hacking Hub</div>
-        </div>
-        <div class="nav-links">
-            <a href="#mission">Mission</a>
-            <a href="reviews.html">Reviews</a>
-            <a href="https://calendly.com/siya-gladile/30min" style="color: var(--accent-cyan);">Book Session</a>
+    <!-- Navigation -->
+    <nav class="cyber-nav">
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="images/hacking-hub-logo.png" alt="Hacking Hub Logo" class="nav-logo-image">
+                <span class="logo-text">HACKING <span class="text-lime">HUB</span></span>
+            </div>
+            <div class="nav-status">
+                <span class="status-dot"></span> SYSTEM STATUS: <span class="text-lime">ONLINE</span>
+            </div>
+            <div class="nav-links">
+                <a href="#mission" class="nav-item">MISSION_INTEL</a>
+                <a href="#challenge" class="nav-item">OPERATIONS</a>
+                <a href="reviews.html" class="nav-item">REVIEWS</a>
+                <a href="https://calendly.com/siya-gladile/30min" class="btn btn-sm btn-cyan">INITIATE_UPLINK</a>
+            </div>
         </div>
     </nav>
 
-    <div class="hero">
-        <img src="images/Canva Design.png" class="watermark" alt="HH Background">
+    <!-- Hero Section -->
+    <header class="hero">
+        <canvas id="network-canvas"></canvas>
+        <div class="container hero-content">
+            <div class="hero-badge">
+                <i class="fa-solid fa-terminal"></i> SECURE_CONNECTION_ESTABLISHED
+            </div>
+            <h1 class="glitch-text" data-text="LAUNCH YOUR CYBER FUTURE">LAUNCH YOUR <br><span class="text-lime">CYBER
+                    FUTURE</span></h1>
+            <p class="hero-sub">
+                // A private community of ambitious individuals committed to building careers in cybersecurity.
+                <br>
+                > Access daily accountability.
+                <br>
+                > Eliminate isolation.
+            </p>
+            <div class="hero-actions">
+                <a href="https://forms.gle/TKTjXnAicfQdXnE38" class="btn btn-primary">
+                    <span class="btn-content">APPLY FOR ACCESS</span>
+                    <i class="fa-solid fa-angle-right"></i>
+                </a>
+                <a href="#about" class="btn btn-outline">
+                    <span class="btn-content">READ MANIFESTO</span>
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            SCROLL TO DECRYPT
+            <div class="line"></div>
+        </div>
+    </header>
 
-        <div class="hero-content">
-            <h1>Launch Your Cyber Career</h1>
-            <p>A private community of ambitious individuals committed to building careers in cybersecurity.</p>
-            <a href="https://forms.gle/TKTjXnAicfQdXnE38" class="btn">Apply Here</a>
+    <!-- About / Stats Bar -->
+    <div class="stats-bar">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <div class="stat-value text-cyan">0%</div>
+                <div class="stat-label">GATEKEEPING</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value text-lime">100%</div>
+                <div class="stat-label">ACCOUNTABILITY</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value text-purple">24/7</div>
+                <div class="stat-label">ACTIVE SUPPORT</div>
+            </div>
         </div>
     </div>
-    <section id="about">
-        <h2>About Hacking Hub</h2>
-        <p>Hacking Hub is a private cybersecurity community with the goal of connecting talented, ambitious individuals
-            within this space.</p>
-        <p>Connect with us on <a href="https://www.linkedin.com/in/siyambonga-gladile-577b5a211/"
-                target="_blank">LinkedIn</a>.</p>
-    </section>
 
-    <section id="mission">
-        <h2>Our Mission</h2>
-        <p>To create a high-performance environment where members learn daily, practice hands-on, grow their
-            professional presence, and hold each other accountable.</p>
-        <div class="grid">
-            <div class="card">
-                <h3>🚀 Accountability</h3>
-                <p>Daily check-ins and tracking to ensure consistent progress.</p>
+    <!-- Mission Grid -->
+    <section id="mission" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><span class="text-lime">01 //</span> MISSION OBJECTIVES</h2>
+                <div class="section-line"></div>
             </div>
-            <div class="card">
-                <h3>🤝 Collaboration</h3>
-                <p>Support each other’s growth with no gatekeeping of knowledge.</p>
-            </div>
-            <div class="card">
-                <h3>🎓 Career Prep</h3>
-                <p>CV reviews, mock interviews, and personalized roadmaps.</p>
-            </div>
-        </div>
-    </section>
 
-    <section id="challenge">
-        <h2>The 8-Week Accountability Challenge</h2>
-        <p>Every quarter, we run a structured challenge designed to boost your skills, visibility, and
-            consistency.</p>
+            <div class="mission-grid">
+                <!-- Card 1 -->
+                <div class="cyber-card">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-rocket"></i>
+                    </div>
+                    <h3>ACCOUNTABILITY_PROTOCOL</h3>
+                    <p>Daily check-ins and tracking. We ensure consistent progress through rigid adherence to daily
+                        tasks.</p>
+                </div>
 
-        <div class="card" style="border-color: var(--primary-lime);">
-            <h3>Daily Rules</h3>
-            <ul>
-                <li><strong>Check-in:</strong> Provide an update between 6:00 PM and 11:00 PM (local
-                    time).</li>
-                <li><strong>Task Completion:</strong> At least one selected task must be done by the end of
-                    the day.</li>
-            </ul>
-            <br>
-            <button class="btn"
-                style="background: var(--dark-bg); border: 1px solid var(--accent-cyan); color: var(--accent-cyan);"
-                onclick="toggleRules()">View Example Tasks</button>
-            <div id="tasks" class="hidden-content">
-                <ul>
-                    <li>📚 Study 1 hour toward a certification (Security+, Azure, AWS, etc.).</li>
-                    <li>💻 Complete a TryHackMe or LetsDefend room.</li>
-                    <li>🎧 Listen to a cybersecurity podcast and post a summary on LinkedIn.</li>
-                    <li>🤝 Attend an in-person event and share key takeaways on LinkedIn.</li>
-                </ul>
-            </div>
-        </div>
-        <br>
-        <div class="card">
-            <h3>🏆 The Prize</h3>
-            <p>The member with the most completed TryHackMe rooms wins a <span class="highlight">free
-                    certification voucher</span> of their choice.</p>
-        </div>
-    </section>
+                <!-- Card 2 -->
+                <div class="cyber-card">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-handshake-simple"></i>
+                    </div>
+                    <h3>COLLABORATIVE_INTEL</h3>
+                    <p>Support each other’s growth. No gatekeeping of knowledge. Open source intelligence sharing
+                        required.</p>
+                </div>
 
-
-
-    <section id="reviews">
-        <h2>Community Feedback</h2>
-        <p>See what our members say about the Hacking Hub environment.</p>
-        <div class="grid">
-            <div class="card">
-                <p class="testimonial-text">"The accountability here is unlike anywhere else. I finally passed my
-                    Security+ because I had a team pushing me every single day."</p>
-                <div class="testimonial-author">- Hacking Hub Member</div>
-            </div>
-            <div class="card">
-                <p class="testimonial-text">"I struggled with consistency for years. The 8-week challenge gave me the
-                    structure I needed to land my first analyst role."</p>
-                <div class="testimonial-author">- Junior Analyst</div>
-            </div>
-            <div class="card">
-                <p class="testimonial-text">"No gatekeeping, just pure support. The mock interviews and roadmap sessions
-                    were a game changer for my confidence."</p>
-                <div class="testimonial-author">- HH Blue Team Member</div>
+                <!-- Card 3 -->
+                <div class="cyber-card">
+                    <div class="card-icon">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+                    <h3>CAREER_PREP_OPS</h3>
+                    <p>CV reviews, mock interviews, and personalized roadmaps. Preparing operatives for field
+                        deployment.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="book-session" class="cta-section">
-        <h2>Ready to Commit?</h2>
-        <p>Your success depends on your own dedication and effort. If you are ready to show up
-            daily, it's time to build your future.</p>
+    <!-- Challenge Section -->
+    <section id="challenge" class="section section-dark">
+        <div class="container">
+            <div class="split-layout">
+                <div class="split-content">
+                    <h2 class="section-title"><span class="text-lime">02 //</span> 8-WEEK OPERATION</h2>
+                    <h3 class="text-white">ACCOUNTABILITY_CHALLENGE</h3>
+                    <p>Every quarter, we initiate a structured operation designed to boost skills, visibility, and
+                        consistency.</p>
 
-        <div class="card" style="max-width: 600px; margin: 0 auto; background: var(--dark-bg);">
-            <h3>Book Your 1-on-1 Roadmap Session</h3>
-            <p>This essential 45-minute session is where we establish your personalized 8-Week Challenge
-                plan and create your 12-month career roadmap.</p>
-            <p><em>This meeting is non-negotiable for all new members.</em></p>
-            <br>
-            <a class="btn" href="https://calendly.com/siya-gladile/30min">Schedule Now</a>
+                    <ul class="feature-list">
+                        <li>
+                            <i class="fa-solid fa-check text-cyan"></i>
+                            <div>
+                                <strong>DAILY_COMMITMENT</strong>
+                                <span>Engage in daily tasks to consistently progress in your cyber journey.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-trophy text-lime"></i>
+                            <div>
+                                <strong>THE_BOUNTY</strong>
+                                <span>Most consistent operative wins a <span class="text-lime">Free Certification
+                                        Voucher</span>.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="split-visual">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <span>bash -- challenges.sh</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="code-line"><span class="prompt">root@hh:~#</span> ./initpy_challenge.sh</div>
+                            <div class="code-line text-cyan">Initializing 8-Week Protocol...</div>
+                            <div class="code-line">[OK] Loading modules...</div>
+                            <div class="code-line">[OK] Establishing accountability...</div>
+                            <div class="code-line">[OK] Target acquired: <span class="text-lime">CAREER_SUCCESS</span>
+                            </div>
+                            <div class="code-line blink">_</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- CTA Section -->
+    <section id="book-session" class="section cta-section">
+        <div class="background-grid"></div>
+        <div class="container text-center">
+            <h2 class="glitch-text" data-text="READY TO DEPLOY?">READY TO DEPLOY?</h2>
+            <p class="cta-desc">Your success depends on your dedication. If you are ready to show up daily, it's time to
+                build your future.</p>
+
+            <div class="cta-box">
+                <h3><i class="fa-regular fa-calendar-check text-cyan"></i> BOOK ROADMAP SESSION</h3>
+                <p>Essential 45-minute session to establish your 8-Week Plan and 12-month career roadmap.</p>
+                <p class="text-warning"><em>// NOTICE: MANDATORY FOR NEW OPERATIVES</em></p>
+                <br>
+                <a href="https://calendly.com/siya-gladile/30min" class="btn btn-primary btn-lg">
+                    SCHEDULE_NOW()
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>Hacking Hub &copy; 2025. Collaboration | Respect | Excellence.</p>
-        <p><em>"Consistent effort beats occasional bursts of motivation." </em></p>
+        <div class="container footer-content">
+            <div class="footer-left">
+                <div class="logo">HACKING <span class="text-lime">HUB</span></div>
+                <p class="copy">&copy; 2025 // SECURING_THE_FUTURE</p>
+            </div>
+            <div class="footer-quote">
+                "CONSISTENT EFFORT BEATS OCCASIONAL BURSTS OF MOTIVATION."
+            </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>
-
 </body>
 
 </html>
