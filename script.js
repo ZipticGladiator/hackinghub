@@ -19,9 +19,24 @@ function initCarousel() {
 
     if (!carousel || !prevBtn || !nextBtn) return;
 
+    // Clone content for infinite scroll effect
+    // We clone the children once to ensure we have enough content to loop seamlessly
+    const content = carousel.innerHTML;
+    carousel.innerHTML += content;
+
+    // SCROLL SETTINGS
+    const scrollSpeed = 0.5; // Pixels per frame
+    let isPaused = false;
+    let autoScrollId;
+
+    // Disable scroll snap for smooth auto-scrolling (optional, prevents fighting)
+    carousel.style.scrollSnapType = 'none';
+    carousel.style.scrollBehavior = 'auto'; // Disable CSS smooth scroll impacts on JS manual scroll
+
+    // BUTTON LISTENERS
     nextBtn.addEventListener('click', () => {
         const card = carousel.querySelector('.review-card');
-        const scrollAmount = card ? card.offsetWidth + 30 : 400; // Width + Gap (30px from CSS)
+        const scrollAmount = card ? card.offsetWidth + 30 : 400;
         carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     });
 
@@ -31,14 +46,33 @@ function initCarousel() {
         carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
     });
 
-    // Auto-scroll optional:
-    // setInterval(() => {
-    //     if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth) {
-    //         carousel.scrollTo({ left: 0, behavior: 'smooth' });
-    //     } else {
-    //         carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    //     }
-    // }, 5000);
+    // PAUSE ON HOVER
+    carousel.addEventListener('mouseenter', () => isPaused = true);
+    carousel.addEventListener('mouseleave', () => isPaused = false);
+
+    // Also pause if buttons are hovered
+    prevBtn.addEventListener('mouseenter', () => isPaused = true);
+    prevBtn.addEventListener('mouseleave', () => isPaused = false);
+    nextBtn.addEventListener('mouseenter', () => isPaused = true);
+    nextBtn.addEventListener('mouseleave', () => isPaused = false);
+
+    // ANIMATION LOOP
+    function startAutoScroll() {
+        if (!isPaused) {
+            // Move right (scrollLeft increases)
+            carousel.scrollLeft += scrollSpeed;
+
+            // Check if we've scrolled past the first set of content
+            // The logic assumes the content was substantially duplicated.
+            // A more robust check: if scrollLeft >= scrollWidth / 2, reset to 0
+            if (carousel.scrollLeft >= carousel.scrollWidth / 2) {
+                carousel.scrollLeft = 0;
+            }
+        }
+        autoScrollId = requestAnimationFrame(startAutoScroll);
+    }
+
+    startAutoScroll();
 }
 
 /* -------------------------------------------------------------------------- */
