@@ -614,3 +614,176 @@ footer {
         text-align: center;
     }
 }
+
+/* Reviews Carousel */
+.reviews-carousel-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.reviews-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 30px;
+    padding: 20px 0;
+    scrollbar-width: none;
+    /* Hide scrollbar Firefox */
+    -ms-overflow-style: none;
+    /* Hide scrollbar IE */
+    width: 100%;
+    scroll-snap-type: x mandatory;
+    padding: 20px 25%;
+    /* Large padding to allow centering */
+}
+
+/* Mobile adjustments handled below */
+@media (max-width: 768px) {
+    .reviews-carousel {
+        padding: 20px 10%;
+        /* Smaller padding on mobile */
+    }
+}
+
+.reviews-carousel::-webkit-scrollbar {
+    display: none;
+    /* Hide scrollbar Chrome/Safari */
+}
+
+/* Review Card Sizing */
+.review-card {
+    width: 350px;
+    /* Target width */
+    max-width: 80vw;
+    /* Ensure it never exceeds 80% of viewport width */
+    min-width: 280px;
+    /* Minimum legible width */
+    scroll-snap-align: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 30px 20px;
+    /* Slightly reduced side padding */
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.review-card:hover {
+    border-color: var(--cyber-cyan);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(14, 215, 181, 0.1);
+}
+
+.review-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid var(--cyber-lime);
+    margin-bottom: 20px;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(204, 255, 0, 0.3);
+}
+
+.review-avatar-placeholder {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid var(--cyber-lime);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--cyber-lime);
+    background: rgba(204, 255, 0, 0.1);
+}
+
+.review-content h3 {
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+}
+
+.role {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+}
+
+.review-text {
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.linkedin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-tertiary);
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.linkedin-btn:hover {
+    color: #fff;
+    border-color: #0077b5;
+    /* LinkedIn Blue */
+    background: rgba(0, 119, 181, 0.1);
+}
+
+.carousel-btn {
+    background: transparent;
+    border: 1px solid var(--text-tertiary);
+    color: var(--text-tertiary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.carousel-btn:hover {
+    color: var(--cyber-lime);
+    border-color: var(--cyber-lime);
+    box-shadow: 0 0 10px rgba(204, 255, 0, 0.3);
+}
+
+/* Mobile adjustments for carousel */
+@media (max-width: 768px) {
+    .reviews-carousel-wrapper {
+        gap: 10px;
+    }
+
+    .review-card {
+        min-width: 300px;
+        /* Slightly smaller on mobile */
+    }
+
+    .carousel-btn {
+        display: none;
+        /* Hide buttons on mobile, rely on swipe/scroll */
+    }
+
+    .reviews-carousel {
+        padding-left: 20px;
+        /* Peek effect */
+        padding-right: 20px;
+    }
+}

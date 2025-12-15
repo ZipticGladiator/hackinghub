@@ -5,7 +5,41 @@ document.addEventListener('DOMContentLoaded', () => {
     initNetworkCanvas();
     initTypewriter();
     initScrollReveal();
+    initCarousel();
 });
+
+/* -------------------------------------------------------------------------- */
+/*                               Reviews Carousel                             */
+/* -------------------------------------------------------------------------- */
+
+function initCarousel() {
+    const carousel = document.getElementById('reviews-carousel');
+    const prevBtn = document.getElementById('prev-review');
+    const nextBtn = document.getElementById('next-review');
+
+    if (!carousel || !prevBtn || !nextBtn) return;
+
+    nextBtn.addEventListener('click', () => {
+        const card = carousel.querySelector('.review-card');
+        const scrollAmount = card ? card.offsetWidth + 30 : 400; // Width + Gap (30px from CSS)
+        carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+
+    prevBtn.addEventListener('click', () => {
+        const card = carousel.querySelector('.review-card');
+        const scrollAmount = card ? card.offsetWidth + 30 : 400;
+        carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    // Auto-scroll optional:
+    // setInterval(() => {
+    //     if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth) {
+    //         carousel.scrollTo({ left: 0, behavior: 'smooth' });
+    //     } else {
+    //         carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    //     }
+    // }, 5000);
+}
 
 /* -------------------------------------------------------------------------- */
 /*                               Network Canvas                               */
@@ -148,10 +182,8 @@ function initScrollReveal() {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
                 // Optional: Trigger specific card animations
-                if (entry.target.classList.contains('cyber-card')) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
             }
         });
     }, { threshold: 0.1 });
