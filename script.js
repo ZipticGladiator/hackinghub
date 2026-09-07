@@ -1,6 +1,22 @@
 // Hacking Hub Core Logic
 // Initialization of Cyber Interface
 
+// Honoured across the decorative motion on this page (network canvas, title
+// scramble, auto-scrolling carousels) so the site is comfortable for visitors
+// who ask their OS to reduce motion — and lighter on phone batteries when the
+// setting is on. Read live (matchMedia) rather than cached so a mid-session
+// change is picked up on the next check.
+const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+function prefersReducedMotion() {
+    return reduceMotionQuery.matches;
+}
+
+// Coarse pointer + narrow viewport ~= phone. Used to dial the network canvas
+// down rather than off.
+function isHandset() {
+    return window.matchMedia('(max-width: 768px)').matches;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initNetworkCanvas();
     initTypewriter();
@@ -24,6 +40,22 @@ function initAutoCarousel(carouselId, prevBtnId, nextBtnId, itemSelector) {
     const carousel = document.getElementById(carouselId);
     if (!carousel) return;
 
+    const prevBtn = document.getElementById(prevBtnId);
+    const nextBtn = document.getElementById(nextBtnId);
+
+    // Reduced-motion: leave the track as-is (no clones, no auto-scroll). Native
+    // horizontal scroll + the prev/next buttons still give full access to every
+    // card; scroll-snap stays on so it lands cleanly.
+    if (prefersReducedMotion()) {
+        const step = () => {
+            const item = carousel.querySelector(itemSelector);
+            return item ? item.offsetWidth + 30 : 400;
+        };
+        nextBtn?.addEventListener('click', () => carousel.scrollBy({ left: step(), behavior: 'smooth' }));
+        prevBtn?.addEventListener('click', () => carousel.scrollBy({ left: -step(), behavior: 'smooth' }));
+        return;
+    }
+
     // Clone original children DOM nodes cleanly for infinite loop
     const originalCards = Array.from(carousel.children);
     originalCards.forEach(card => {
@@ -38,9 +70,6 @@ function initAutoCarousel(carouselId, prevBtnId, nextBtnId, itemSelector) {
     // Disable scroll snap for smooth auto-scrolling
     carousel.style.scrollSnapType = 'none';
     carousel.style.scrollBehavior = 'auto';
-
-    const prevBtn = document.getElementById(prevBtnId);
-    const nextBtn = document.getElementById(nextBtnId);
 
     // BUTTON LISTENERS
     if (nextBtn) {
@@ -89,17 +118,32 @@ function initNetworkCanvas() {
     const canvas = document.getElementById('network-canvas');
     if (!canvas) return;
 
+    // Purely decorative — skip the whole animation loop when motion is to be
+    // reduced. The hero still has its background colour and grid.
+    if (prefersReducedMotion()) {
+        canvas.remove();
+        return;
+    }
+
     const ctx = canvas.getContext('2d');
     let width, height;
     let particles = [];
 
-    // Configuration
-    const particleCount = 60;
-    const connectionDistance = 150;
+    // Configuration — lighter on phones (fewer nodes, shorter link radius) so
+    // the O(n^2) per-frame pass doesn't chew battery or drop frames.
+    const handset = isHandset();
+    const particleCount = handset ? 28 : 60;
+    const connectionDistance = handset ? 110 : 150;
     const particleSpeed = 0.5;
 
     function resize() {
-        width = canvas.width = window.innerWidth;
+        // Only the width matters here: on mobile, scrolling shows/hides the
+        // address bar, which fires 'resize' with a new height every time. Re-
+        // sizing the canvas on that is pointless churn (and resets the frame),
+        // so ignore height-only changes and react to real width changes.
+        const newWidth = window.innerWidth;
+        if (newWidth === width) return;
+        width = canvas.width = newWidth;
         height = canvas.height = window.innerHeight;
     }
 
@@ -173,6 +217,10 @@ function initNetworkCanvas() {
 
 function initTypewriter() {
     const elements = document.querySelectorAll('.glitch-text');
+
+    // Reduced motion: skip the scramble, just show the final headline. The
+    // markup already contains the styled final text, so leave it untouched.
+    if (prefersReducedMotion()) return;
 
     elements.forEach(el => {
         const text = el.getAttribute('data-text');

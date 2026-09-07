@@ -16,6 +16,7 @@ Hacking Hub is a private community of ambitious individuals committed to buildin
 - **HTML5**: Semantic structure for accessibility and SEO.
 - **CSS3**: Custom styling with a modern "Cyber/Hacker" aesthetic (Lime Green & Navy Blue theme).
 - **JavaScript**: Interactive elements for the UI.
+- **PWA**: Installable on mobile and desktop via `manifest.webmanifest`; `service-worker.js` caches the shell (network-first for pages so content stays fresh) and serves `offline.html` when there's no connection.
 
 ## 📦 Usage
 

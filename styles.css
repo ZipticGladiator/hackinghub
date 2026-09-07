@@ -67,6 +67,10 @@ a {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    /* Keep content clear of a landscape notch / rounded display corners
+       (env(safe-area-inset-*) resolves to 0 on ordinary screens). */
+    padding-left: max(20px, env(safe-area-inset-left));
+    padding-right: max(20px, env(safe-area-inset-right));
 }
 
 .text-lime {
@@ -137,6 +141,10 @@ body::after {
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
     padding: 15px 0;
+    /* When an installed PWA renders under the iOS status bar
+       (apple-mobile-web-app-status-bar-style: black-translucent), pad the bar
+       down so the logo clears the clock. Zero in a normal browser tab. */
+    padding-top: calc(15px + env(safe-area-inset-top));
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -314,6 +322,9 @@ body::after {
     padding: 120px 0;
     overflow: hidden;
     min-height: 80vh;
+    /* svh tracks the *stable* mobile viewport, so the hero doesn't jump as the
+       address bar shows/hides. Ignored by browsers without svh support. */
+    min-height: 80svh;
     display: flex;
     align-items: center;
 }
@@ -637,6 +648,13 @@ footer {
         display: flex;
     }
 
+    /* The "SYSTEM STATUS: ONLINE" pill is decorative and, at this width, it
+       squeezed the hamburger toggle right off the screen — leaving no way to
+       open the menu. Drop it on phones; logo + toggle is the whole nav. */
+    .nav-status {
+        display: none;
+    }
+
     .nav-links {
         display: none;
         position: absolute;
@@ -648,9 +666,10 @@ footer {
         gap: 0;
         background: var(--bg-panel);
         border-bottom: 1px solid var(--border-color);
-        padding: 10px 20px 20px;
+        padding: 10px 20px calc(20px + env(safe-area-inset-bottom));
         max-height: calc(100vh - 100%);
         overflow-y: auto;
+        overscroll-behavior: contain;
     }
 
     .nav-links.is-open {
@@ -692,6 +711,40 @@ footer {
 
     .hero {
         padding: 100px 20px;
+    }
+
+    /* Stack the hero CTAs so each is a full-width tap target instead of two
+       cramped side-by-side buttons. */
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-actions .btn {
+        justify-content: center;
+    }
+
+    /* "SCROLL TO DECRYPT" is a flex sibling of the hero content with no
+       positioning rules of its own — on a narrow screen it collapses into a
+       clipped column down the right edge. It's a desktop scroll hint; drop it
+       on touch, where scrolling is a given. */
+    .scroll-indicator {
+        display: none;
+    }
+
+    /* Section headings are single long tokens ("TAILORED_ROLE_ROADMAPS",
+       "FAQ_DECRYPTED"). At 2.5rem with white-space:nowrap they ran straight
+       off the right edge on a phone — shrink them and let them wrap. */
+    .section-header {
+        gap: 14px;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        white-space: normal;
+        overflow-wrap: break-word;
     }
 
     .stats-grid {
@@ -1006,6 +1059,51 @@ footer {
     width: 100%;
     height: 100%;
     border: none;
+}
+
+/* Sits inside a .video-wrapper exactly like its iframe normally would
+   (same absolute-fill sizing as ".video-wrapper iframe" above), showing a
+   "coming soon" state before a real embed exists instead of a blank
+   iframe. A sibling of the iframe, never combined onto .video-wrapper
+   itself - that element's own position:relative + padding-bottom trick is
+   what makes the 16:9 box work in the first place, and this needs to fill
+   it, not replace it. Swap the parent .video-wrapper's contents for a
+   real <iframe> once the video is uploaded - see the HTML comment at the
+   demo section for exactly where. */
+.video-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px) 0 0 / 100% 3px,
+        linear-gradient(135deg, #0a0f18, #050505);
+    text-align: center;
+    padding: 20px;
+}
+
+.video-placeholder i {
+    font-size: 2.2rem;
+    opacity: 0.7;
+}
+
+.video-placeholder .placeholder-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    color: var(--text-secondary);
+}
+
+.video-placeholder .placeholder-sub {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.72rem;
+    color: var(--text-tertiary);
 }
 
 @media (max-width: 768px) {
@@ -1909,5 +2007,114 @@ footer {
 
     .roadmap-carousel .roadmap-card {
         width: 300px;
+    }
+}
+
+/* ==========================================================================
+   MOBILE / INSTALLED-APP POLISH
+   Added when the site became an installable PWA. Everything here degrades to
+   a no-op on a desktop browser (env() insets are 0, the media queries don't
+   match), so it only changes the experience on phones / standalone launches.
+   ========================================================================== */
+
+html {
+    /* Stop iOS from inflating body text when the phone rotates to landscape. */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    /* Stop vertical scroll from chaining past the page — keeps a horizontal
+       carousel swipe or an over-scrolled menu from yanking the whole document
+       (and, in an installed window, from bouncing). */
+    overscroll-behavior-y: contain;
+}
+
+/* Kill the grey tap flash; give deliberate elements their own press feedback
+   so a touch still feels acknowledged. */
+a,
+button,
+.btn,
+summary,
+.carousel-btn,
+.nav-toggle,
+.faq-question {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active,
+.linkedin-btn:active,
+.event-link:active,
+.resource-card-link:active,
+.roadmap-salary-link:active,
+.nav-dropdown-link:active {
+    opacity: 0.6;
+}
+
+/* Horizontal carousels shouldn't chain their scroll to the page or trigger a
+   browser back-swipe when they hit the end. */
+.reviews-carousel,
+.videos-carousel,
+.impact-carousel,
+.events-carousel,
+.roadmap-carousel {
+    overscroll-behavior-x: contain;
+}
+
+@media (max-width: 768px) {
+    /* iOS zooms the page in when you focus an input smaller than 16px, so
+       keep every text field at least 16px on phones. (Page-level rules like
+       interview-prep's .ip-textarea are pinned to 16px at their own source.) */
+    input,
+    textarea,
+    select {
+        font-size: 16px;
+    }
+
+    /* Comfortable thumb targets for the menu's folded-out resource links. */
+    .nav-links .nav-dropdown-link {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Button-styled links: hit-area up to ~44px tall. */
+    .linkedin-btn,
+    .event-link {
+        min-height: 44px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
+
+/* Respect a reduced-motion preference: freeze the decorative animation
+   (blinking status dot, glow transitions, smooth-scroll). The JS side
+   (network canvas, auto-scrolling carousels, title scramble) checks the same
+   preference. */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .reviews-carousel,
+    .videos-carousel,
+    .impact-carousel,
+    .events-carousel,
+    .roadmap-carousel {
+        scroll-behavior: auto;
+    }
+}
+
+/* Installed-app window: no browser chrome, so the scanline overlay and the
+   hero's URL-bar breathing room are just noise. */
+@media (display-mode: standalone) {
+    body::after {
+        display: none;
     }
 }

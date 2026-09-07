@@ -1,0 +1,59 @@
+{
+  "id": "/",
+  "name": "Hacking Hub — Cyber Career Accelerator",
+  "short_name": "Hacking Hub",
+  "description": "A South African cybersecurity career accelerator — coach-built roadmaps, real salary data, hands-on prep, and a community, to help you land your first role in security.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "background_color": "#050505",
+  "theme_color": "#0a0f18",
+  "categories": ["education", "business"],
+  "lang": "en-ZA",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Salary Intel",
+      "short_name": "Salaries",
+      "description": "Real South African cybersecurity salary data by role and location",
+      "url": "/salaries.html?source=pwa",
+      "icons": [{ "src": "images/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Practice Quiz",
+      "short_name": "Quiz",
+      "description": "Free CompTIA Security+ practice questions",
+      "url": "/quiz.html?source=pwa",
+      "icons": [{ "src": "images/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "AI Interview Prep",
+      "short_name": "Interview",
+      "description": "Generate tailored interview questions from a job description",
+      "url": "/interview-prep.html?source=pwa",
+      "icons": [{ "src": "images/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

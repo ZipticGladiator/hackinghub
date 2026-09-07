@@ -12,8 +12,21 @@
         gtag('config', 'G-WHNELJ2BH2');
     </script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>AI Interview Prep | Hacking Hub</title>
+
+    <!-- PWA / installable app. These tags are hand-repeated per page like the
+         rest of each <head> (only the nav/footer are templated). -->
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta name="theme-color" content="#0a0f18">
+    <meta name="color-scheme" content="dark">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/icon-192.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Hacking Hub">
+    <script src="pwa.js" defer></script>
     <meta name="description" content="Paste a job description and watch Gemma's AI analysis sequence generate tailored interview questions live — a free preview of the real tool Hacking Hub members use.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hackinghub.co.za/interview-prep.html">
@@ -76,7 +89,8 @@
             border: 1px solid var(--border-color);
             color: var(--text-primary);
             font-family: 'Fira Code', monospace;
-            font-size: 0.88rem;
+            /* 16px, not smaller — a sub-16px field makes iOS zoom in on focus. */
+            font-size: 1rem;
             padding: 14px 16px;
             border-radius: 6px;
             resize: vertical;
@@ -324,6 +338,8 @@
         (function initGlitchTitle() {
             const el = document.querySelector('.glitch-text');
             if (!el) return;
+            // Reduced motion: leave the final styled title as-is, no scramble.
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
             const text = el.getAttribute('data-text');
             const originalHtml = el.innerHTML;
             let iteration = 0;

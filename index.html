@@ -12,8 +12,21 @@
         gtag('config', 'G-WHNELJ2BH2');
     </script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Hacking Hub | Cyber Career Accelerator</title>
+
+    <!-- PWA / installable app. These tags are hand-repeated per page like the
+         rest of each <head> (only the nav/footer are templated). -->
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta name="theme-color" content="#0a0f18">
+    <meta name="color-scheme" content="dark">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/icon-192.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Hacking Hub">
+    <script src="pwa.js" defer></script>
     <meta name="description" content="A South African cybersecurity career accelerator — coach-built roadmaps, real salary data, hands-on prep, and a community, to help you land your first role in security.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hackinghub.co.za/">
@@ -104,7 +117,7 @@
             </p>
 
             <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 50px; text-align: left;">
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 30px; margin-bottom: 50px; text-align: left;">
                 <div style="border-left: 2px solid var(--cyber-lime); padding-left: 20px;">
                     <h3 class="text-white" style="font-size: 1.2rem; margin-bottom: 10px;">TIRED OF "TUTORIAL HELL"?
                     </h3>
@@ -129,11 +142,60 @@
         </div>
     </section>
 
+    <!-- Demo Reel - a real recorded walkthrough of the member portal. No
+         video uploaded yet: the .video-wrapper below shows a placeholder
+         frame instead of an <iframe>, so the section reads as "coming
+         soon" rather than a blank/broken embed. Swap the placeholder div
+         for a real YouTube iframe (same markup as the FIELD_INTERVIEWS
+         section further down the page) the moment the edit is uploaded:
+
+         <div class="video-wrapper">
+             <iframe
+                 src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                 title="Hacking Hub Portal Demo"
+                 frameborder="0"
+                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                 allowfullscreen>
+             </iframe>
+         </div>
+    -->
+    <section id="demo" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><span class="text-lime">01 //</span> LIVE_TRANSMISSION</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <p style="color: var(--text-secondary); font-family: 'Fira Code', monospace; font-size: 0.9rem; margin-bottom: 40px; text-align: center;">
+                // SEE THE PORTAL BEFORE YOU JOIN — NO LOGIN REQUIRED
+            </p>
+
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="video-card hover-glow">
+                    <div class="video-label">
+                        <i class="fa-solid fa-circle-play text-lime"></i>
+                        <span>SYSTEM_DEMO_TRANSMISSION</span>
+                    </div>
+                    <div class="video-wrapper">
+                        <div class="video-placeholder">
+                            <i class="fa-solid fa-satellite-dish text-cyan"></i>
+                            <div class="placeholder-label">TRANSMISSION INCOMING</div>
+                            <div class="placeholder-sub">// Portal walkthrough — uploading soon</div>
+                        </div>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 24px; color: var(--text-secondary); font-size: 0.95rem;">
+                    A real, recorded walkthrough of the member portal — the roadmap, the practice quiz, AI interview prep, all of it. Nothing staged.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Mission Grid -->
     <section id="mission" class="section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title"><span class="text-lime">01 //</span> MISSION OBJECTIVES</h2>
+                <h2 class="section-title"><span class="text-lime">02 //</span> MISSION OBJECTIVES</h2>
                 <div class="section-line"></div>
             </div>
 
@@ -181,7 +243,7 @@
     <section id="roadmaps" class="section section-dark">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title"><span class="text-lime">02 //</span> TAILORED_ROLE_ROADMAPS</h2>
+                <h2 class="section-title"><span class="text-lime">03 //</span> TAILORED_ROLE_ROADMAPS</h2>
                 <div class="section-line"></div>
             </div>
 
@@ -450,7 +512,7 @@
     <section id="resources" class="section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title"><span class="text-lime">03 //</span> RESOURCES</h2>
+                <h2 class="section-title"><span class="text-lime">04 //</span> RESOURCES</h2>
                 <div class="section-line"></div>
             </div>
 
@@ -502,7 +564,7 @@
     <section id="impact" class="section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title"><span class="text-lime">04 //</span> IMPACT_REPORT</h2>
+                <h2 class="section-title"><span class="text-lime">05 //</span> IMPACT_REPORT</h2>
                 <div class="section-line"></div>
             </div>
 
@@ -561,7 +623,7 @@
     <section id="events" class="section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title"><span class="text-lime">05 //</span> COMMUNITY_EVENTS</h2>
+                <h2 class="section-title"><span class="text-lime">06 //</span> COMMUNITY_EVENTS</h2>
                 <div class="section-line"></div>
             </div>
 
@@ -584,7 +646,7 @@
     <section id="reviews" class="section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title"><span class="text-lime">06 //</span> MEMBER_REVIEWS</h2>
+                <h2 class="section-title"><span class="text-lime">07 //</span> MEMBER_REVIEWS</h2>
                 <div class="section-line"></div>
             </div>
 
@@ -788,7 +850,7 @@
     <section id="interviews" class="section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title"><span class="text-lime">07 //</span> FIELD_INTERVIEWS</h2>
+                <h2 class="section-title"><span class="text-lime">08 //</span> FIELD_INTERVIEWS</h2>
                 <div class="section-line"></div>
             </div>
 
@@ -862,7 +924,7 @@
     <section id="pricing" class="section section-dark">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title"><span class="text-lime">08 //</span> ACCESS_TIERS</h2>
+                <h2 class="section-title"><span class="text-lime">09 //</span> ACCESS_TIERS</h2>
                 <div class="section-line"></div>
             </div>
 
@@ -989,7 +1051,7 @@
     <section id="faq" class="section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title"><span class="text-lime">09 //</span> FAQ_DECRYPTED</h2>
+                <h2 class="section-title"><span class="text-lime">10 //</span> FAQ_DECRYPTED</h2>
                 <div class="section-line"></div>
             </div>
 
